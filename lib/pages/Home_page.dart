@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget _horozcopoPage(int pagina, Size size) {
     int a = 0;
     String texto;
-    return Column(children: <Widget>[
+    return Column(children: [
       Expanded(
         child: Container(
           color: Colors.amber,
@@ -89,44 +89,44 @@ class _HomePageState extends State<HomePage> {
         flex: 1,
       ),
       Expanded(
-        child: FadeInUp(
-          child: FutureBuilder(
-              future: signo.getAstros(),
-              builder: (BuildContext context, AsyncSnapshot<Astros> snapshot) {
-                if (snapshot.hasData) {
-                  print(snapshot);
-                  for (var x in snapshot.data.horoscopo.values) {
-                    if (a == pagina) {
-                      switch (pag) {
-                        case 0:
-                          texto = x.salud;
-                          break;
-                        case 1:
-                          texto = x.amor;
-                          break;
-                        case 2:
-                          texto = x.dinero;
-                          break;
-                      }
-
-                      a = 0;
+        child: FutureBuilder(
+            future: signo.getAstros(),
+            builder: (BuildContext context, AsyncSnapshot<Astros> snapshot) {
+              if (snapshot.hasData) {
+                print(snapshot);
+                for (var x in snapshot.data.horoscopo.values) {
+                  if (a == pagina) {
+                    switch (pag) {
+                      case 0:
+                        texto = x.salud;
+                        break;
+                      case 1:
+                        texto = x.amor;
+                        break;
+                      case 2:
+                        texto = x.dinero;
+                        break;
                     }
-                    print(x.salud);
-                    a = a + 1;
+
+                    a = 0;
                   }
-                  return SingleChildScrollView(
+                  print(x.salud);
+                  a = a + 1;
+                }
+                return SingleChildScrollView(
+                  child: FadeInUp(
                     child: Container(
                         child: Text(
                       texto ?? 'default value',
                       style: TextStyle(
                           fontFamily: 'AmaticSC', fontSize: size.width * .17),
                     )),
-                  );
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              }),
-        ),
+                  ),
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            }),
         flex: 3,
       ),
     ]);
