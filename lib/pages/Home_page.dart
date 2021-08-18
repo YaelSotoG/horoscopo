@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     'ACUARIO',
     'PISCIS'
   ];
+
   @override
   Widget build(BuildContext context) {
     final tampant = MediaQuery.of(context).size;

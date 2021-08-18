@@ -1,4 +1,4 @@
-package com.example.horoscopo
+package com.YaelSoto.Leonhoroscopo
 
 import io.flutter.embedding.android.FlutterActivity
 
