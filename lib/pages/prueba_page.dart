@@ -54,16 +54,20 @@ class _PruebaPageState extends State<PruebaPage> {
   Widget appBar(int index, Size tampant) {
     return Expanded(
       child: Container(
-        color: Colors.amber,
+        color: Color.fromRGBO(3, 4, 94, 1),
         child: SafeArea(
           child: Row(
             children: [
               Expanded(
                 flex: 2,
-                child: Image(
-                    image: AssetImage('assets/${_zodiaco[index]}.png'),
-                    width: tampant.width * .22,
-                    height: tampant.width * .22),
+                child: CircleAvatar(
+                  backgroundColor: Color.fromRGBO(0, 180, 216, 1),
+                  radius: tampant.width * .15,
+                  child: Image(
+                      image: AssetImage('assets/${_zodiaco[index]}.png'),
+                      // width: tampant.width * .22,
+                      height: tampant.width * .22),
+                ),
               ),
               Expanded(
                   flex: 3,
@@ -71,7 +75,9 @@ class _PruebaPageState extends State<PruebaPage> {
                     _zodiaco[index],
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                        fontFamily: 'AmaticSC', fontSize: tampant.width * .17),
+                        fontFamily: 'AmaticSC',
+                        fontSize: tampant.width * .17,
+                        color: Color.fromRGBO(0, 119, 182, 1)),
                   )),
 
               // textoclasico(pagina, size),
@@ -93,7 +99,7 @@ class _PruebaPageState extends State<PruebaPage> {
           body: TabBarView(
             children: [
               new Container(
-                color: Colors.red,
+                color: Color.fromRGBO(144, 224, 239, 1),
                 child: FutureBuilder(
                   future: signo.getAstros(),
                   builder:
@@ -121,7 +127,7 @@ class _PruebaPageState extends State<PruebaPage> {
                 ),
               ),
               new Container(
-                color: Colors.pink,
+                color: Color.fromRGBO(144, 224, 239, 1),
                 child: FutureBuilder(
                   future: signo.getAstros(),
                   builder:
@@ -149,7 +155,7 @@ class _PruebaPageState extends State<PruebaPage> {
                 ),
               ),
               new Container(
-                color: Colors.green,
+                color: Color.fromRGBO(144, 224, 239, 1),
                 child: FutureBuilder(
                   future: signo.getAstros(),
                   builder:
@@ -186,15 +192,19 @@ class _PruebaPageState extends State<PruebaPage> {
 
   Widget bottombar() {
     return JumpingTabBar(
+        backgroundColor: Color.fromRGBO(202, 240, 248, 1),
         duration: Duration(milliseconds: 500),
         onChangeTab: onChangeTab,
         items: [
           TabItemIcon(
-              iconData: FontAwesomeIcons.firstAid, curveColor: Colors.red),
+              iconData: FontAwesomeIcons.firstAid,
+              curveColor: Color.fromRGBO(144, 224, 239, 1)),
           TabItemIcon(
-              iconData: FontAwesomeIcons.heart, curveColor: Colors.pink),
+              iconData: FontAwesomeIcons.heart,
+              curveColor: Color.fromRGBO(144, 224, 239, 1)),
           TabItemIcon(
-              iconData: FontAwesomeIcons.moneyBill, curveColor: Colors.green),
+              iconData: FontAwesomeIcons.moneyBill,
+              curveColor: Color.fromRGBO(144, 224, 239, 1)),
         ]);
   }
 }
